@@ -1,0 +1,237 @@
+.main {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 60px 24px 40px;
+}
+
+/* header */
+.header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.pill {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 14px;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.dot {
+  color: var(--green);
+}
+
+.sub {
+  font-size: 15px;
+  color: var(--muted);
+  font-weight: 400;
+}
+
+/* bento grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: 14px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+}
+
+.cardAccent {
+  background: #0071e3;
+  border-color: transparent;
+  color: #fff;
+}
+
+.cardAccent .label,
+.cardAccent .labelSub {
+  color: rgba(255,255,255,0.7);
+}
+
+.cardAccent .bigNum {
+  color: #fff;
+}
+
+.cardGreen {
+  background: #1a1a1a;
+  border-color: transparent;
+  color: #fff;
+}
+
+.cardGreen .label,
+.cardGreen .labelSub {
+  color: rgba(255,255,255,0.5);
+}
+
+.cardGreen .bigNum {
+  color: var(--green);
+}
+
+/* spans */
+.cardWide {
+  grid-column: span 4;
+}
+
+.cardTall {
+  grid-column: span 4;
+}
+
+/* typography inside cards */
+.label {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.labelSub {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.bigNum {
+  font-size: 52px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--text);
+}
+
+.medNum {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* heatmap */
+.heatmap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  margin-top: 12px;
+}
+
+.cell {
+  width: 13px;
+  height: 13px;
+  border-radius: 3px;
+  background: var(--green-dim);
+  flex-shrink: 0;
+}
+
+.lvl0 { background: #eaeaea; }
+.lvl1 { background: #b7efca; }
+.lvl2 { background: #4ac26b; }
+.lvl3 { background: #2da44e; }
+.lvl4 { background: #116329; }
+
+/* list */
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  margin-top: 12px;
+}
+
+.listItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  gap: 12px;
+}
+
+.listItem:last-child {
+  border-bottom: none;
+}
+
+.commitMsg {
+  font-size: 13px;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 75%;
+}
+
+.commitDate {
+  font-size: 12px;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+/* footer */
+.footer {
+  margin-top: 48px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* responsive */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cardWide,
+  .cardTall {
+    grid-column: span 2;
+  }
+  .bigNum { font-size: 40px; }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .cardWide,
+  .cardTall {
+    grid-column: span 1;
+  }
+}
