@@ -2,11 +2,11 @@
 """
 keeping-it-green — smart daily commit script
 Logic: date-seeded randomness so commits are reproducible per day
-  - Sunday: 4–7 commits (heavy day)
-  - Mon/Wed/Fri: 2–4 commits
-  - Tue/Thu: 1–3 commits
-  - Sat: 1–2 commits (light)
-  - Never exactly 0, never > 7 (looks natural)
+  - Sunday: 9–12 commits (heavy day)
+  - Mon/Wed/Fri: 7–10 commits
+  - Tue/Thu: 6–9 commits
+  - Sat: 5–8 commits (light)
+  - Never below 5, never above 12 (looks natural)
 """
 
 import json
@@ -18,8 +18,8 @@ import subprocess
 # ── config ───────────────────────────────────────────────────────────────────
 LOG_FILE  = "activity_log.json"
 STATS_FILE = "stats.json"
-AUTHOR_NAME  = "nikshep254"
-AUTHOR_EMAIL = "nikshepdoggalli@gmail.com"
+AUTHOR_NAME  = "nikshepclaude1-cmyk"
+AUTHOR_EMAIL = "nikshepclaude1@gmail.com"
 # ─────────────────────────────────────────────────────────────────────────────
 
 def commit_count_for_date(date: datetime.date) -> int:
@@ -29,17 +29,17 @@ def commit_count_for_date(date: datetime.date) -> int:
     dow  = date.weekday()          # 0=Mon … 6=Sun
 
     if dow == 6:                   # Sunday  — heavy
-        base = rng.randint(4, 7)
+        base = rng.randint(9, 12)
     elif dow in (0, 2, 4):         # Mon/Wed/Fri — medium
-        base = rng.randint(2, 4)
-    elif dow in (1, 3):            # Tue/Thu — light
-        base = rng.randint(1, 3)
-    else:                          # Saturday — minimal
-        base = rng.randint(1, 2)
+        base = rng.randint(7, 10)
+    elif dow in (1, 3):            # Tue/Thu — moderate
+        base = rng.randint(6, 9)
+    else:                          # Saturday — light
+        base = rng.randint(5, 8)
 
     # tiny real-time jitter (±1) so two runs on same day feel alive
     jitter = random.randint(-1, 1)
-    return max(1, min(7, base + jitter))
+    return max(5, min(12, base + jitter))
 
 
 def load_log() -> dict:
